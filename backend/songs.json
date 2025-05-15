@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Song One",
+    "artist": "Artist A",
+    "audioUrl": "http://localhost:5000/static/song1.mp3"
+  },
+  {
+    "id": 2,
+    "title": "Song Two",
+    "artist": "Artist B",
+    "audioUrl": "http://localhost:5000/static/song2.mp3"
+  }
+]
