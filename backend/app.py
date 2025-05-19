@@ -21,7 +21,7 @@ def search():
     query = request.args.get('q', '')
     songs = load_songs()
     results = linear_search(songs, query)
-    # Sort search results by title using merge_sort
+    # Sort the filtered results by title using merge_sort
     sorted_results = merge_sort(results, 'title')
     return jsonify({'results': sorted_results})
 
