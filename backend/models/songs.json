@@ -1,0 +1,79 @@
+[
+  {
+    "title": "Song A",
+    "artist": "Artist 1",
+    "album": "Album X",
+    "genre": "Pop",
+    "year": 2020,
+    "duration": 210,
+    "popularity": 100,
+    "coverImage": "coverA.jpg",
+    "audioUrl": "audioA.mp3"
+  },
+  {
+    "title": "Song B",
+    "artist": "Artist 2",
+    "album": "Album Y",
+    "genre": "Rock",
+    "year": 2019,
+    "duration": 180,
+    "popularity": 80,
+    "coverImage": "coverB.jpg",
+    "audioUrl": "audioB.mp3"
+  },
+  {
+    "title": "Courtside",
+    "artist": "Karan Aujla",
+    "album": "Unknown",
+    "genre": "Unknown",
+    "year": 2025,
+    "duration": 210,
+    "popularity": 50,
+    "coverImage": "",
+    "audioUrl": "/static/Courtside - Karan Aujla (DJJOhAL.Com).mp3"
+  },
+  {
+    "title": "Life for HipHop",
+    "artist": "Cheema Y",
+    "album": "Unknown",
+    "genre": "Unknown",
+    "year": 2025,
+    "duration": 210,
+    "popularity": 50,
+    "coverImage": "",
+    "audioUrl": "/static/Life for HipHop - Cheema Y (DJJOhAL.Com).mp3"
+  },
+  {
+    "title": "Qatal",
+    "artist": "Guru Randhawa",
+    "album": "Unknown",
+    "genre": "Unknown",
+    "year": 2025,
+    "duration": 210,
+    "popularity": 50,
+    "coverImage": "",
+    "audioUrl": "/static/Qatal - Guru Randhawa (DJJOhAL.Com).mp3"
+  },
+  {
+    "title": "Young GOAT",
+    "artist": "Cheema Y",
+    "album": "Unknown",
+    "genre": "Unknown",
+    "year": 2025,
+    "duration": 210,
+    "popularity": 50,
+    "coverImage": "",
+    "audioUrl": "/static/Young GOAT - Cheema Y (DJJOhAL.Com).mp3"
+  },
+  {
+    "title": "Police",
+    "artist": "Cheema Y",
+    "album": "Unknown",
+    "genre": "Unknown",
+    "year": 2025,
+    "duration": 210,
+    "popularity": 50,
+    "coverImage": "",
+    "audioUrl": "/static/Police - Cheema Y (DJJOhAL.Com).mp3"
+  }
+] 
