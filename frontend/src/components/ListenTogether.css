@@ -1,0 +1,201 @@
+.listen-together-container {
+  background: #181818;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.25);
+}
+
+.room-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.create-room-btn {
+  background: #1db954;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.create-room-btn:hover {
+  background: #1ed760;
+  transform: translateY(-1px);
+}
+
+.join-room {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.join-room input {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 20px;
+  background: #282828;
+  color: white;
+  font-size: 14px;
+}
+
+.join-room button {
+  background: #1db954;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.join-room button:hover {
+  background: #1ed760;
+}
+
+.room-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-header h3 {
+  color: white;
+  margin: 0;
+}
+
+.leave-room-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.leave-room-btn:hover {
+  background: #c0392b;
+}
+
+.room-info {
+  background: #282828;
+  border-radius: 8px;
+  padding: 16px;
+  color: white;
+}
+
+.host-badge {
+  color: #1db954;
+  font-weight: 600;
+  margin: 8px 0 0 0;
+}
+
+.reactions-container {
+  background: #282828;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.reactions-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+  min-height: 40px;
+}
+
+.reaction {
+  font-size: 24px;
+  animation: pop-in 0.3s ease-out;
+}
+
+.emoji-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.emoji-btn {
+  background: #404040;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.emoji-btn:hover {
+  background: #505050;
+  transform: scale(1.1);
+}
+
+.emoji-btn.selected {
+  background: #1db954;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .listen-together-container {
+    padding: 12px;
+  }
+
+  .join-room {
+    flex-direction: column;
+  }
+
+  .join-room button {
+    width: 100%;
+  }
+
+  .room-header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .leave-room-btn {
+    width: 100%;
+  }
+
+  .emoji-picker {
+    gap: 4px;
+  }
+
+  .emoji-btn {
+    font-size: 18px;
+    padding: 6px;
+  }
+} 
