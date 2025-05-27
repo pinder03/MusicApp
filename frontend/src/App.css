@@ -7,12 +7,17 @@ body {
 }
 
 .app-container {
-  max-width: 500px;
+  max-width: 700px;
   margin: 40px auto;
   background: #222;
   border-radius: 20px;
   box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
   padding: 32px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
 }
 
 h1 {
@@ -109,4 +114,54 @@ audio {
     font-size: 1rem;
     padding: 12px 10px;
   }
+}
+
+@media (min-width: 1200px) {
+  .app-container {
+    max-width: 900px;
+    padding: 40px 60px 40px 60px;
+  }
+  .custom-audio-player {
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.app-root {
+  display: flex;
+  min-height: 100vh;
+  background: #181818;
+}
+
+.sidebar {
+  width: 180px;
+  background: #181818;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px 0 0 0;
+  min-height: 100vh;
+  box-shadow: 2px 0 16px 0 rgba(0,0,0,0.10);
+  z-index: 2;
+}
+
+.sidebar-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 1.1rem;
+  padding: 16px 32px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 0 20px 20px 0;
+  margin-bottom: 8px;
+}
+
+.sidebar-btn.active, .sidebar-btn:hover {
+  background: #232323;
+  color: #1db954;
 }

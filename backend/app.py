@@ -4,6 +4,7 @@ import json
 import os
 import uuid
 from datetime import datetime
+import threading
 
 from searching import linear_search
 from sorting import merge_sort
@@ -12,6 +13,10 @@ app = Flask(__name__, static_folder='static')
 CORS(app)
 
 SONGS_PATH = os.path.join(os.path.dirname(__file__), 'models', 'songs.json')
+RATINGS_PATH = os.path.join(os.path.dirname(__file__), 'models', 'ratings.json')
+ratings_lock = threading.Lock()
+HISTORY_PATH = os.path.join(os.path.dirname(__file__), 'models', 'history.json')
+history_lock = threading.Lock()
 
 # Store active rooms and their participants
 rooms = {}
@@ -20,6 +25,28 @@ rooms = {}
 def load_songs():
     with open(SONGS_PATH, 'r') as f:
         return json.load(f)
+
+def load_ratings():
+    if not os.path.exists(RATINGS_PATH):
+        return {}
+    with open(RATINGS_PATH, 'r') as f:
+        return json.load(f)
+
+def save_ratings(ratings):
+    with ratings_lock:
+        with open(RATINGS_PATH, 'w') as f:
+            json.dump(ratings, f)
+
+def load_history():
+    if not os.path.exists(HISTORY_PATH):
+        return {}
+    with open(HISTORY_PATH, 'r') as f:
+        return json.load(f)
+
+def save_history(history):
+    with history_lock:
+        with open(HISTORY_PATH, 'w') as f:
+            json.dump(history, f)
 
 @app.route('/search')
 def search():
@@ -117,6 +144,56 @@ def get_room_info(room_id):
 @app.route('/static/<path:filename>')
 def serve_audio(filename):
     return send_from_directory(app.static_folder, filename)
+
+@app.route('/rate-song', methods=['POST'])
+def rate_song():
+    data = request.json
+    song_title = data.get('songTitle')
+    rating = data.get('rating')
+    if not song_title or not isinstance(rating, int) or not (1 <= rating <= 5):
+        return jsonify({'success': False, 'error': 'Invalid data'}), 400
+    ratings = load_ratings()
+    if song_title not in ratings:
+        ratings[song_title] = []
+    ratings[song_title].append(rating)
+    save_ratings(ratings)
+    return jsonify({'success': True})
+
+@app.route('/song-rating')
+def song_rating():
+    song_title = request.args.get('title')
+    if not song_title:
+        return jsonify({'success': False, 'error': 'No title provided'}), 400
+    ratings = load_ratings()
+    song_ratings = ratings.get(song_title, [])
+    if not song_ratings:
+        return jsonify({'average': None, 'count': 0})
+    avg = sum(song_ratings) / len(song_ratings)
+    return jsonify({'average': avg, 'count': len(song_ratings)})
+
+@app.route('/add-history', methods=['POST'])
+def add_history():
+    data = request.json
+    song_title = data.get('songTitle')
+    if not song_title:
+        return jsonify({'success': False, 'error': 'No song title provided'}), 400
+    user_ip = request.remote_addr
+    history = load_history()
+    user_history = history.get(user_ip, [])
+    if song_title in user_history:
+        user_history.remove(song_title)
+    user_history.insert(0, song_title)
+    user_history = user_history[:5]
+    history[user_ip] = user_history
+    save_history(history)
+    return jsonify({'success': True})
+
+@app.route('/history')
+def get_history():
+    user_ip = request.remote_addr
+    history = load_history()
+    user_history = history.get(user_ip, [])
+    return jsonify({'history': user_history})
 
 if __name__ == '__main__':
     app.run(debug=True) 
